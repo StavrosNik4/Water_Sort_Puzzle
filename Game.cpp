@@ -2,29 +2,37 @@
 #include <iostream>
 
 Game::Game() {
-    n = 4;
+    n = 7;
     tubes = new Tube[n];
 
+    tubes[0].push('2');
+    tubes[0].push('1');
     tubes[0].push('0');
-    tubes[0].push('1');
-    tubes[0].push('1');
     tubes[0].push('0');
 
     tubes[1].push('1');
-    tubes[1].push('0');
-    tubes[1].push('1');
-    tubes[1].push('0');
+    tubes[1].push('4');
+    tubes[1].push('4');
+    tubes[1].push('3');
+
+    tubes[2].push('4');
+    tubes[2].push('4');
+    tubes[2].push('2');
+    tubes[2].push('0');
+
+    tubes[3].push('3');
+    tubes[3].push('2');
+    tubes[3].push('2');
+    tubes[3].push('3');
+
+    tubes[4].push('1');
+    tubes[4].push('3');
+    tubes[4].push('0');
+    tubes[4].push('1');
 
     setPrevious(nullptr);
 }
 
-/*
-Game::Game(Game &g1) {
-    n = g1.n;
-    tubes = g1.tubes;
-    setPrevious(g1.getPrevious());
-}
- */
 
 // a way to visualize the game
 void Game::print() {
@@ -36,24 +44,36 @@ void Game::print() {
     cout << "------------------\n";
 }
 
-bool Game::move(Game &n, int a, int b) {
-    if(n.tubes[b].isEmpty() || (!(n.tubes[a].isEmpty()) && n.tubes[b].getTop() == n.tubes[a].getTop() && !(n.tubes[b].isFull())))
+bool Game::move(Game &game, int a, int b) {
+    if(game.tubes[b].isEmpty() || (!(game.tubes[a].isEmpty()) && game.tubes[b].getTop() == game.tubes[a].getTop() && !(game.tubes[b].isFull())))
     {
-        char tmp = n.tubes[a].getTop();
-        while(n.tubes[a].getTop() == tmp && !(n.tubes[b].isFull())){
-            n.tubes[b].push(tmp);
-            n.tubes[a].pop();
+        char tmp = game.tubes[a].getTop();
+        while(game.tubes[a].getTop() == tmp && !(game.tubes[b].isFull())){
+            game.tubes[b].push(tmp);
+            game.tubes[a].pop();
         }
+        game.setPrevious(this);
         return true;
     }
     return false;
 }
 
 bool Game::operator==(const Game &s) const {
+    bool flag = false;
     for(int i = 0; i < n; i++)
     {
-
+        flag = false;
+        for(int j = 0; j < n; j++)
+        {
+            if(tubes[i] == s.tubes[j]) {
+                flag = true;
+                break;
+            }
+        }
+        if(!flag)
+            return false;
     }
+    return flag;
 }
 
 Game Game::operator= (Game o)
@@ -67,16 +87,14 @@ Game Game::operator= (Game o)
 vector<Game *> Game::expand() {
     vector<Game *> children;
     Game *child;
-    //child = new Game(*this);
     for(int i=0; i<n; i++)
     {
         for(int j=0; j<n; j++)
         {
             child = new Game(*this);
-            if(i==j)
-                continue;
-            else{
-                if(move(*child, i,j))
+            if (i == j) { continue; }
+            else {
+                if (move(*child, i, j))
                     children.push_back(child);
                 else
                     delete child;
@@ -88,7 +106,7 @@ vector<Game *> Game::expand() {
 
 int Game::getDepth()
 {
-    int counter =0;
+    int counter = 0;
     Game *p = this;
     while (p->prev!=nullptr)
     {
@@ -107,10 +125,26 @@ Game *Game::getGoal(){
             goal -> tubes[i].pop();
 
     for(int i=0; i<4; i++)
-        goal -> tubes[0].push('1');
+        goal -> tubes[0].push('0');
 
     for(int i=0; i<4; i++)
-        goal -> tubes[1].push('0');
+        goal -> tubes[1].push('1');
 
+    for(int i=0; i<4; i++)
+        goal -> tubes[2].push('2');
+
+    for(int i=0; i<4; i++)
+        goal -> tubes[3].push('3');
+
+    for(int i=0; i<4; i++)
+        goal -> tubes[4].push('4');
     return goal;
+}
+
+Game::Game(const Game &g1) {
+    n = g1.n;
+    tubes = new Tube[n];
+    for(int i=0; i<n; i++)
+        tubes[i] = g1.tubes[i];
+    prev = g1.prev;
 }

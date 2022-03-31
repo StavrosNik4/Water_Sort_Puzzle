@@ -60,16 +60,20 @@ bool Tube::pop() {
     return true;
 }
 
-bool Tube::operator==(Tube s) {
-    if(isEmpty() && s.isEmpty())
+bool Tube::operator==(Tube s) const{
+    if(size==s.size) {
+        if (size==0 && s.size == 0)
+            return true;
+        int i = 0;
+        while (i < size) {
+            if (st[i] != s.getElement(i))
+                return false;
+            i++;
+        }
         return true;
-    int i = 0;
-    while(i<size)
-    {
-        if(st[i]!=s.getElement(i))
-            return false;
     }
-    return true;
+    else
+        return false;
 }
 
 Tube Tube::operator=(Tube o) {

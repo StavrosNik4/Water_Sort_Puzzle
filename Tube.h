@@ -21,13 +21,14 @@ class Tube{
         void print();
 
         Tube operator= (Tube o);
-        bool operator==(Tube s);
+        bool operator==(Tube s) const;
 
         char getElement(int i);
 
-private:
         char st[4];
         int size;
+private:
+
 
 
 };

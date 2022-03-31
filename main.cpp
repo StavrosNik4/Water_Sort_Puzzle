@@ -4,6 +4,7 @@
 #include <limits>
 #include <ctime>
 #include "Game.h"
+#include "Tube.h"
 #include <queue>
 #include <stack>
 #include <algorithm>
@@ -47,35 +48,28 @@ int main(){
 
     Game* game = new Game();
 
-    game -> move(*game, 1, 2);
-    game -> move(*game, 0, 2);
-    game -> move(*game, 0, 3);
-    game -> move(*game, 1, 3);
-    game -> move(*game, 1, 0);
-    game -> move(*game, 1, 3);
-    game -> move(*game, 0, 2);
+    //game -> move(*game, 0, 2);
+    //game -> move(*game, 0, 3);
+    //game -> move(*game, 1, 3);
+    //game -> move(*game, 1, 0);
+    //game -> move(*game, 1, 3);
+    //game -> move(*game, 0, 2);
+    //game -> move(*game, 1, 2);
+    //game -> move(*game, 1, 3);
 
-    game->print();
 
     Game* goal;
     goal = game->getGoal();
 
-    goal -> print();
-
-    if(*game == *goal)
+    if(*goal==*game)
         cout << "yes!";
 
-    /*
     cout<<endl<<"BFS: ";
     Game* bsol;
     bsol=BFS(game,goal,examined,mem);
     if (bsol!=nullptr)
-    {
         cout<<"depth = "<<bsol->getDepth()<<", Mem: "<<mem<<", Examined: "<<examined<<endl;
-    }
     else
         cout<<"Problem unsolvable"<<endl;
-    */
-
     return 0;
 }
