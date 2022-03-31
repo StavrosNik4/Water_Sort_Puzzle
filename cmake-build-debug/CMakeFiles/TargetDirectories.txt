@@ -1,0 +1,3 @@
+C:/Users/stavr/CLionProjects/Water Sort Puzzle again/cmake-build-debug/CMakeFiles/Water_Sort_Puzzle_again.dir
+C:/Users/stavr/CLionProjects/Water Sort Puzzle again/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/stavr/CLionProjects/Water Sort Puzzle again/cmake-build-debug/CMakeFiles/rebuild_cache.dir
