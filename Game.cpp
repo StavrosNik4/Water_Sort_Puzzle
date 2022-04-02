@@ -167,3 +167,13 @@ void Game::getPath() {
         p=p->prev;
     }
 }
+
+void Game::getPath(Game &game) {
+    if(game.prev == nullptr)
+    {
+        game.print();
+        return;
+    }
+    getPath(*game.prev);
+    game.print();
+}

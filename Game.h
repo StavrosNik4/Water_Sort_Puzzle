@@ -28,6 +28,8 @@ public:
     Game *getGoal();
 
     void getPath();
+
+    void getPath(Game &game);
 };
 
 #endif // GAME_H

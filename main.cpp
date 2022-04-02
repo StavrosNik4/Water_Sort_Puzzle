@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <limits>
 #include "Game.h"
+#include "Timer.h"
 #include <queue>
 #include <stack>
 #include <algorithm>
@@ -42,29 +43,44 @@ Game *BFS(Game *initial,Game *goal, long long &examined, long long &mem)
 
 
 int main(){
+
+    Timer timer;
     long long mem,examined;
 
     int n;
     cout << "Give number of tubes:";
     cin >> n;
 
+    timer.start();
+
     Game* game = new Game(n);
 
     Game* goal;
     goal = game->getGoal();
 
+    cout << "Initial state:" << endl; //<< "------------------" << endl;
     game->print();
+    cout << "Final state:" << endl; //<< "------------------" << endl;
     goal->print();
 
     cout<<endl<<"BFS: ";
     Game* bsol;
     bsol=BFS(game,goal,examined,mem);
     if (bsol!=nullptr)
-        cout<<"depth = "<<bsol->getDepth()<<", Mem: "<<mem<<", Examined: "<<examined<<endl;
-    else
-        cout<<"Problem unsolvable"<<endl;
+        cout<<"depth = "<<bsol->getDepth()<<", Mem: "<<mem<<", Examined: "<<examined<<endl<<endl;
+    else {
+        cout << "Problem unsolvable" << endl;
+        timer.stop();
+        cout << "Seconds: " << timer.getSec();
+        return 0;
+    }
 
-    bsol -> getPath();
+    cout << "Step by step:" << endl;
+    bsol -> getPath(*bsol);
+
+    timer.stop();
+
+    cout << "Seconds: " << timer.getSec();
 
     return 0;
 }
