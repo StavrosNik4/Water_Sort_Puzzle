@@ -15,6 +15,7 @@ public:
     Game* prev;
     Tube* tubes;
     Game();
+    Game(int a);
     Game(const Game &g1);
     void setPrevious (Game *p) {prev=p;}
     Game *getPrevious() {return prev;}
@@ -25,6 +26,8 @@ public:
     vector<Game *> expand();
     int getDepth();
     Game *getGoal();
+
+    void getPath();
 };
 
 #endif // GAME_H

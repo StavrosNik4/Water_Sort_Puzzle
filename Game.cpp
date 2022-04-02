@@ -1,44 +1,23 @@
 #include "Game.h"
 #include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
+
 
 Game::Game() {
     n = 7;
     tubes = new Tube[n];
-
-    tubes[0].push('2');
-    tubes[0].push('1');
-    tubes[0].push('0');
-    tubes[0].push('0');
-
-    tubes[1].push('1');
-    tubes[1].push('4');
-    tubes[1].push('4');
-    tubes[1].push('3');
-
-    tubes[2].push('4');
-    tubes[2].push('4');
-    tubes[2].push('2');
-    tubes[2].push('0');
-
-    tubes[3].push('3');
-    tubes[3].push('2');
-    tubes[3].push('2');
-    tubes[3].push('3');
-
-    tubes[4].push('1');
-    tubes[4].push('3');
-    tubes[4].push('0');
-    tubes[4].push('1');
-
     setPrevious(nullptr);
 }
 
 
 // a way to visualize the game
 void Game::print() {
-    for(int i = 0; i < n; i++)
+    for(int i = 3; i >= 0; i--)
     {
-        tubes[i].print();
+        for(int j = 0; j < n; j++)
+            cout << '|' << tubes[j].getElement(i) << '|' << ' ';
         cout << '\n';
     }
     cout << "------------------\n";
@@ -114,30 +93,28 @@ int Game::getDepth()
         counter++;
     }
     return counter;
-    //return path.size();
 }
 
 Game *Game::getGoal(){
-    Game *goal = new Game();
+    Game *goal = new Game(n);
+    int colors[17] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a' - 48, 'b' - 48, 'c' - 48, 'd' - 48, 'e' - 48, 'f' - 48, 'g'- 48};
 
-    for(int i=0; i<n-2; i++)
-        for(int j=0; j<n; j++)
-            goal -> tubes[i].pop();
+    for(int i = 0; i<n-2; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            goal->tubes[i].pop();
+        }
+    }
 
-    for(int i=0; i<4; i++)
-        goal -> tubes[0].push('0');
-
-    for(int i=0; i<4; i++)
-        goal -> tubes[1].push('1');
-
-    for(int i=0; i<4; i++)
-        goal -> tubes[2].push('2');
-
-    for(int i=0; i<4; i++)
-        goal -> tubes[3].push('3');
-
-    for(int i=0; i<4; i++)
-        goal -> tubes[4].push('4');
+    for(int i = 0; i<n-2; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            goal->tubes[i].push(colors[i] + 48);
+        }
+    }
+    goal->setPrevious(nullptr);
     return goal;
 }
 
@@ -147,4 +124,46 @@ Game::Game(const Game &g1) {
     for(int i=0; i<n; i++)
         tubes[i] = g1.tubes[i];
     prev = g1.prev;
+}
+
+Game::Game(int a) {
+    n = a;
+    tubes = new Tube[n];
+
+    int colors[17][2] = {{0, 4}, {1, 4}, {2, 4}, {3, 4}, {4, 4}, {5, 4}, {6, 4}, {7, 4}, {8, 4}, {9, 4}, {10, 4}, {11, 4}, {12, 4}, {13, 4}, {14, 4}, {15, 4}, {16, 4}};
+
+    int i=0, j=0;
+    int t=4*(n-2);
+
+    srand((unsigned)time(NULL));
+
+    while(t>0)
+    {
+        int r = rand() % (n-2);
+        if(colors[r][1] > 0)
+        {
+            if(colors[r][0]<10)
+                tubes[i].push(colors[r][0] + 48);
+            else
+                tubes[i].push(colors[r][0] + 87);
+            colors[r][1]--;
+            t--;
+            j++;
+        }
+        if(j==4)
+        {
+            i++;
+            j=0;
+        }
+    }
+    setPrevious(nullptr);
+}
+
+void Game::getPath() {
+    Game *p = this;
+    while (p->prev!=nullptr)
+    {
+        p->print();
+        p=p->prev;
+    }
 }

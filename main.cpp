@@ -2,9 +2,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <limits>
-#include <ctime>
 #include "Game.h"
-#include "Tube.h"
 #include <queue>
 #include <stack>
 #include <algorithm>
@@ -46,23 +44,17 @@ Game *BFS(Game *initial,Game *goal, long long &examined, long long &mem)
 int main(){
     long long mem,examined;
 
-    Game* game = new Game();
+    int n;
+    cout << "Give number of tubes:";
+    cin >> n;
 
-    //game -> move(*game, 0, 2);
-    //game -> move(*game, 0, 3);
-    //game -> move(*game, 1, 3);
-    //game -> move(*game, 1, 0);
-    //game -> move(*game, 1, 3);
-    //game -> move(*game, 0, 2);
-    //game -> move(*game, 1, 2);
-    //game -> move(*game, 1, 3);
-
+    Game* game = new Game(n);
 
     Game* goal;
     goal = game->getGoal();
 
-    if(*goal==*game)
-        cout << "yes!";
+    game->print();
+    goal->print();
 
     cout<<endl<<"BFS: ";
     Game* bsol;
@@ -71,5 +63,8 @@ int main(){
         cout<<"depth = "<<bsol->getDepth()<<", Mem: "<<mem<<", Examined: "<<examined<<endl;
     else
         cout<<"Problem unsolvable"<<endl;
+
+    bsol -> getPath();
+
     return 0;
 }
