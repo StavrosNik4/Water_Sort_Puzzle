@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <ctime>
+#include <algorithm>
 
 
 Game::Game() {
@@ -176,4 +177,30 @@ void Game::getPath(Game &game) {
     }
     getPath(*game.prev);
     game.print();
+}
+
+string Game::getKey() {
+    string arr[n];
+
+    string str;
+
+    for(int i=0; i<n; i++){
+        string a;
+        for(int j=3; j>=0; j--)
+        {
+            if(tubes[i].getElement(j)!=' ')
+            {
+                a.push_back(tubes[i].getElement(j));
+            }
+        }
+        arr[i] = a;
+    }
+
+    int s = sizeof(arr)/sizeof(arr[0]);
+    sort(arr, arr + s);
+    for(int y = 0; y < s; y++){
+        str.append(arr[y]);
+        str.append("-");
+    }
+    return str;
 }
