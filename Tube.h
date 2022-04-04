@@ -7,28 +7,19 @@ using namespace std;
 
 class Tube{
     public:
-        Tube();
-        Tube(Tube &temp);
-
-        bool push(char a);
-        bool pop();
-
-        bool isEmpty();
-        bool isFull();
-
-        int getTop();
-
-        void print();
-
-        Tube operator= (Tube o);
-        bool operator==(Tube s) const;
-
-        char getElement(int i);
-
-        char st[4];
-        int size;
+        Tube();     //default constructor
+        Tube(Tube &temp);   // copy constructor
+        bool push(char a);  // stack push method
+        bool pop();         // stack pop method
+        bool isEmpty();     // method to check if the tube is empty
+        bool isFull();      // method to check if the tube is full
+        char getTop();       // method to get
+        Tube operator= (Tube o);        // assign overload
+        bool operator==(Tube s) const; // equals overload
+        char getElement(int i);       // method to get an element from the ith position of the tube
 private:
-
+    char st[4];
+    int size;
 
 
 };

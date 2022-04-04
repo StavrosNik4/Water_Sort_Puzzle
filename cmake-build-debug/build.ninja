@@ -51,25 +51,25 @@ build cmake_object_order_depends_target_Water_Sort_Puzzle_again: phony || CMakeF
 
 build CMakeFiles/Water_Sort_Puzzle_again.dir/main.cpp.obj: CXX_COMPILER__Water_Sort_Puzzle_again_Debug C$:/Users/stavr/CLionProjects/Water$ Sort$ Puzzle$ again/main.cpp || cmake_object_order_depends_target_Water_Sort_Puzzle_again
   DEP_FILE = CMakeFiles\Water_Sort_Puzzle_again.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -static-libstdc++ -static-libgcc -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
   OBJECT_FILE_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
 
 build CMakeFiles/Water_Sort_Puzzle_again.dir/Tube.cpp.obj: CXX_COMPILER__Water_Sort_Puzzle_again_Debug C$:/Users/stavr/CLionProjects/Water$ Sort$ Puzzle$ again/Tube.cpp || cmake_object_order_depends_target_Water_Sort_Puzzle_again
   DEP_FILE = CMakeFiles\Water_Sort_Puzzle_again.dir\Tube.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -static-libstdc++ -static-libgcc -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
   OBJECT_FILE_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
 
 build CMakeFiles/Water_Sort_Puzzle_again.dir/Game.cpp.obj: CXX_COMPILER__Water_Sort_Puzzle_again_Debug C$:/Users/stavr/CLionProjects/Water$ Sort$ Puzzle$ again/Game.cpp || cmake_object_order_depends_target_Water_Sort_Puzzle_again
   DEP_FILE = CMakeFiles\Water_Sort_Puzzle_again.dir\Game.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -static-libstdc++ -static-libgcc -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
   OBJECT_FILE_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
 
 build CMakeFiles/Water_Sort_Puzzle_again.dir/Timer.cpp.obj: CXX_COMPILER__Water_Sort_Puzzle_again_Debug C$:/Users/stavr/CLionProjects/Water$ Sort$ Puzzle$ again/Timer.cpp || cmake_object_order_depends_target_Water_Sort_Puzzle_again
   DEP_FILE = CMakeFiles\Water_Sort_Puzzle_again.dir\Timer.cpp.obj.d
-  FLAGS = -g -std=gnu++14
+  FLAGS = -static-libstdc++ -static-libgcc -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
   OBJECT_FILE_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
 
@@ -82,7 +82,7 @@ build CMakeFiles/Water_Sort_Puzzle_again.dir/Timer.cpp.obj: CXX_COMPILER__Water_
 # Link the executable Water_Sort_Puzzle_again.exe
 
 build Water_Sort_Puzzle_again.exe: CXX_EXECUTABLE_LINKER__Water_Sort_Puzzle_again_Debug CMakeFiles/Water_Sort_Puzzle_again.dir/main.cpp.obj CMakeFiles/Water_Sort_Puzzle_again.dir/Tube.cpp.obj CMakeFiles/Water_Sort_Puzzle_again.dir/Game.cpp.obj CMakeFiles/Water_Sort_Puzzle_again.dir/Timer.cpp.obj
-  FLAGS = -g
+  FLAGS = -static-libstdc++ -static-libgcc -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Water_Sort_Puzzle_again.dir
   POST_BUILD = cd .

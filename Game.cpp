@@ -60,7 +60,7 @@ Game Game::operator= (Game o)
 {
     n = o.n;
     tubes = o.tubes;
-    prev = o.prev;
+    prev = o.getPrevious();
     return *this;
 }
 
@@ -199,6 +199,7 @@ string Game::getKey() {
     int s = sizeof(arr)/sizeof(arr[0]);
     sort(arr, arr + s);
     for(int y = 0; y < s; y++){
+        str.append(arr[y]);
         str.append(arr[y]);
         str.append("-");
     }

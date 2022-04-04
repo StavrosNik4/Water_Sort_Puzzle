@@ -30,15 +30,7 @@ char Tube::getElement(int i){
     return st[i];
 }
 
-void Tube::print() {
-    for(int i=3; i>=0; i--)
-    {
-        cout << "|" << st[i] << "|\n";
-    }
-    cout << "\n";
-}
-
-int Tube::getTop() {
+char Tube::getTop() {
     if(size>0)
         return st[size-1];
     return -1;

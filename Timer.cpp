@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Timer.h"
 
 void Timer::start() {

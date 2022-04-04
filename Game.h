@@ -9,11 +9,10 @@ using namespace std;
 
 class Game{
 private:
-
-public:
     int n;      // number of tubes, must be: 4 <= n < 20
     Game* prev;
     Tube* tubes;
+public:
     Game();
     Game(int a);
     Game(const Game &g1);

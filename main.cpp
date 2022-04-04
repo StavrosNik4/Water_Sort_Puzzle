@@ -9,6 +9,9 @@
 
 using namespace std;
 
+/*
+ * BFS implementation with unordered_map and queue structures.
+ */
 
 Game *BFS2(Game *initial,Game *goal, long long &examined, long long &mem)
 {
@@ -39,6 +42,10 @@ Game *BFS2(Game *initial,Game *goal, long long &examined, long long &mem)
     }
     return nullptr;
 }
+
+/*
+ * BFS implementation with vector and queue structures
+ */
 
 
 Game *BFS(Game *initial,Game *goal, long long &examined, long long &mem)
@@ -89,13 +96,10 @@ int main(){
     Game* goal;
     goal = game->getGoal();
 
-    //game -> move(*game, 1, 4);
-    //cout << game->getKey() << endl;
 
-
-    cout << "Initial state: " << game->getKey() << endl; //<< "------------------" << endl;
+    cout << "Initial state: " << endl;
     game->print();
-    cout << "Final state:" << endl; //<< "------------------" << endl;
+    cout << "Final state:" << endl;
     goal->print();
 
     cout<<endl<<"BFS: ";
@@ -104,9 +108,9 @@ int main(){
     if (bsol!=nullptr)
         cout<<"depth = "<<bsol->getDepth()<<", Mem: "<<mem<<", Examined: "<<examined<<endl<<endl;
     else {
-        cout << mem << " " << examined << endl;
         cout << "Problem unsolvable" << endl;
         timer.stop();
+        cout << "Mem: " << mem << ", Examined: " << examined << endl;
         cout << "Seconds: " << timer.getSec() << endl;
         return 0;
     }
