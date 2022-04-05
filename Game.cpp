@@ -1,7 +1,6 @@
 #include "Game.h"
 #include <iostream>
 #include <cstdlib>
-#include <cstdio>
 #include <ctime>
 #include <algorithm>
 
@@ -56,14 +55,6 @@ bool Game::operator==(const Game &s) const {
     return flag;
 }
 
-Game Game::operator= (Game o)
-{
-    n = o.n;
-    tubes = o.tubes;
-    prev = o.getPrevious();
-    return *this;
-}
-
 vector<Game *> Game::expand() {
     vector<Game *> children;
     Game *child;
@@ -96,7 +87,7 @@ int Game::getDepth()
     return counter;
 }
 
-Game *Game::getGoal(){
+Game *Game::                                        getGoal(){
     Game *goal = new Game(n);
     int colors[17] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a' - 48, 'b' - 48, 'c' - 48, 'd' - 48, 'e' - 48, 'f' - 48, 'g'- 48};
 
@@ -160,22 +151,13 @@ Game::Game(int a) {
     setPrevious(nullptr);
 }
 
-void Game::getPath() {
-    Game *p = this;
-    while (p->prev!=nullptr)
-    {
-        p->print();
-        p=p->prev;
-    }
-}
-
-void Game::getPath(Game &game) {
+void Game::printPath(Game &game) {
     if(game.prev == nullptr)
     {
         game.print();
         return;
     }
-    getPath(*game.prev);
+    printPath(*game.prev);
     game.print();
 }
 

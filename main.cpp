@@ -4,7 +4,6 @@
 #include "Timer.h"
 #include <queue>
 #include <stack>
-#include <algorithm>
 #include <string>
 
 using namespace std;
@@ -13,7 +12,7 @@ using namespace std;
  * BFS implementation with unordered_map and queue structures.
  */
 
-Game *BFS2(Game *initial,Game *goal, long long &examined, long long &mem)
+Game *BFS(Game *initial,Game *goal, long long &examined, long long &mem)
 {
     queue<Game *> agenda;
     unordered_map <string ,Game *> closed;
@@ -38,42 +37,6 @@ Game *BFS2(Game *initial,Game *goal, long long &examined, long long &mem)
             for (unsigned int i=0;i<children.size();i++)
                 if (closed.count(children[i]->getKey())==0)
                     agenda.push(children[i]);
-        }
-    }
-    return nullptr;
-}
-
-/*
- * BFS implementation with vector and queue structures
- */
-
-
-Game *BFS(Game *initial,Game *goal, long long &examined, long long &mem)
-{
-    queue<Game *> agenda;
-    vector<Game> closed;
-
-    agenda.push(initial);
-    examined=0;
-    mem=1;
-    while (agenda.size()>0)
-    {
-        if (agenda.size() + closed.size() > mem)
-            mem = agenda.size() + closed.size();
-        Game *s = agenda.front();
-        agenda.pop();
-        if (find(closed.begin(), closed.end(), *s)==closed.end())
-        {
-            examined++;
-            if (*s==*goal)
-                return s;
-            closed.push_back(*s);
-            vector<Game *> children =s->expand();
-            for (unsigned int i=0;i<children.size();i++)
-            {
-                if (find(closed.begin(), closed.end(), *children[i])==closed.end())
-                    agenda.push(children[i]);
-            }
         }
     }
     return nullptr;
@@ -104,7 +67,7 @@ int main(){
 
     cout<<endl<<"BFS: ";
     Game* bsol;
-    bsol=BFS2(game,goal,examined,mem);
+    bsol=BFS(game,goal,examined,mem);
     if (bsol!=nullptr)
         cout<<"depth = "<<bsol->getDepth()<<", Mem: "<<mem<<", Examined: "<<examined<<endl<<endl;
     else {
@@ -116,7 +79,7 @@ int main(){
     }
 
     cout << "Step by step:" << endl;
-    bsol -> getPath(*bsol);
+    bsol -> printPath(*bsol);
 
     timer.stop();
 

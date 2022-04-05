@@ -1,11 +1,6 @@
 # ninja log v5
-7	719	6706971304998677	CMakeFiles/Water_Sort_Puzzle_again.dir/Tube.cpp.obj	d2adfc1ca8e3665a
-20	1422	6706975745176047	CMakeFiles/Water_Sort_Puzzle_again.dir/main.cpp.obj	a952bb3b6d567df5
-1422	1880	6706975749578811	Water_Sort_Puzzle_again.exe	9a5a7ce1d5e76f14
-5	990	6706972338686019	CMakeFiles/Water_Sort_Puzzle_again.dir/Game.cpp.obj	29edfdd6349f1861
-59	528	6706975736214738	CMakeFiles/Water_Sort_Puzzle_again.dir/Timer.cpp.obj	31ca88d35b62bb01
+114	1657	6708758075403794	CMakeFiles/Water_Sort_Puzzle_again.dir/Tube.cpp.obj	5372909d4db45485
+44	1543	6708915343077854	CMakeFiles/Water_Sort_Puzzle_again.dir/main.cpp.obj	6d29168aef38a092
+1543	2472	6708915352238568	Water_Sort_Puzzle_again.exe	79eb4779530e1c77
+7	1145	6708915339107598	CMakeFiles/Water_Sort_Puzzle_again.dir/Game.cpp.obj	5b746bab300656bc
 84	820	6707780348297454	CMakeFiles/Water_Sort_Puzzle_again.dir/Timer.cpp.obj	85f92e2e1492ec
-47	1085	6707780350878536	CMakeFiles/Water_Sort_Puzzle_again.dir/Tube.cpp.obj	5372909d4db45485
-8	1792	6707780358026879	CMakeFiles/Water_Sort_Puzzle_again.dir/Game.cpp.obj	5b746bab300656bc
-65	2566	6707780365773747	CMakeFiles/Water_Sort_Puzzle_again.dir/main.cpp.obj	6d29168aef38a092
-2567	3862	6707780378631029	Water_Sort_Puzzle_again.exe	79eb4779530e1c77

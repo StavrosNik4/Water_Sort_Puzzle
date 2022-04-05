@@ -8,12 +8,6 @@ Tube::Tube()
     size = 0;
 }
 
-Tube::Tube(Tube &temp) {
-    for(int i=0; i<temp.size; i++)
-        st[i] = temp.getElement(i);
-    size = temp.size;
-}
-
 bool Tube::isEmpty() {
     if(size==0)
         return true;
